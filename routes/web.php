@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\Admin\adminlogincontroller;
 use App\Http\Controllers\Admin\PageController;
+use App\Http\Controllers\Admin\CreateCompanyController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\AdminHomeController;
@@ -16,6 +17,7 @@ use App\Http\Controllers\Frontend\ContactController;
 use App\Http\Controllers\Frontend\ServiceController;
 use App\Http\Controllers\Frontend\TestimonialsController;
 use App\Http\Controllers\admin\TempImagesController;
+use App\Http\Controllers\Admin\ProfileController;
 
 // ------------------------------------
 // Frontend Routes
@@ -84,6 +86,34 @@ Route::prefix('admin')->group(function () {
         Route::get('/pages/{pages}/edit', [PageController::class, 'edit'])->name('pages.edit');
         Route::put('/admin/pages/{pages}', [PageController::class, 'update'])->name('pages.update');
         Route::delete('/pages/{pages}', [PageController::class, 'destroy'])->name('pages.destroy');
+
+        // ------------------------------------
+        // company-profile Management Routes
+        // ------------------------------------
+        Route::get('/admin/company-profile', [ProfileController::class, 'index'])->name('admin.company.profile');
+        Route::post('/admin/company-profile/update', [ProfileController::class, 'update'])->name('admin.company.profile.update');
+
+
+        // ------------------------------------
+        // Create - Company Management Routes
+        // ------------------------------------
+        // Route to list Company information
+        Route::get('/admin/create_company', [CreateCompanyController::class, 'index'])->name('admin.create_company.index');
+
+        // Route to Create Company information
+        Route::get('/admin/create_company/create', [CreateCompanyController::class, 'create'])->name('admin.create_company.create'); // Show form for creating
+
+        // Route to Store Company information
+        Route::post('/admin/create_company', [CreateCompanyController::class, 'store'])->name('admin.create_company.store');        // Store new entry
+
+        // Route to edit Company information
+        Route::get('/admin/create_company/edit/{id}', [CreateCompanyController ::class, 'edit'])->name('admin.create_company.edit');
+
+        // Route to update Company information
+        Route::post('/admin/create_company/update/{id}', [CreateCompanyController::class, 'update'])->name('admin.create_company.update');
+
+        // Route to delete Company information
+        Route::delete('/admin/create_company/destroy/{id}', [CreateCompanyController::class, 'destroy'])->name('admin.create_company.destroy');
 
         // ------------------------------------
         // Authentication & Password Reset Routes

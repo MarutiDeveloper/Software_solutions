@@ -20,21 +20,21 @@
         </li>
         <!-- Create Company -->
         <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{ route('admin.create_company.index') }}" class="nav-link">
                 <i class="nav-icon fas fa-building"></i>
                 <p>Create Company</p>
             </a>
         </li>
         <!-- Company Details -->
-        <li class="nav-item">
+        <!-- <li class="nav-item">
             <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-info-circle"></i>
                 <p>Company Details</p>
             </a>
-        </li>
+        </li> -->
         <!-- Company Profile -->
         <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{ route('admin.company.profile') }}" class="nav-link">
                 <i class="nav-icon fas fa-id-card"></i>
                 <p>Company Profile</p>
             </a>
