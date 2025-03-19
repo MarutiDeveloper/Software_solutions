@@ -23,7 +23,7 @@ use App\Http\Controllers\Admin\ProfileController;
 // Frontend Routes
 // ------------------------------------
 
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [AboutController::class, 'index']);
 Route::get('/blog', [BlogController::class, 'index']);
 Route::get('/contact', [ContactController::class, 'index']);
@@ -91,6 +91,8 @@ Route::prefix('admin')->group(function () {
         // company-profile Management Routes
         // ------------------------------------
         Route::get('/admin/company-profile', [ProfileController::class, 'index'])->name('admin.company.profile');
+        Route::get('/admin/company-create', [ProfileController::class, 'create'])->name('admin.company.create');
+        Route::post('/admin/company-store', [ProfileController::class, 'store'])->name('admin.company.store');
         Route::post('/admin/company-profile/update', [ProfileController::class, 'update'])->name('admin.company.profile.update');
 
 
@@ -110,7 +112,7 @@ Route::prefix('admin')->group(function () {
         Route::get('/admin/create_company/edit/{id}', [CreateCompanyController ::class, 'edit'])->name('admin.create_company.edit');
 
         // Route to update Company information
-        Route::post('/admin/create_company/update/{id}', [CreateCompanyController::class, 'update'])->name('admin.create_company.update');
+        Route::put('/admin/create_company/update/{id}', [CreateCompanyController::class, 'update'])->name('admin.create_company.update');
 
         // Route to delete Company information
         Route::delete('/admin/create_company/destroy/{id}', [CreateCompanyController::class, 'destroy'])->name('admin.create_company.destroy');

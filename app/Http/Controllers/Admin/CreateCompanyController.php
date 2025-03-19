@@ -28,7 +28,7 @@ class CreateCompanyController extends Controller
         $validatedData = $request->validate([
             'company_name' => 'required|string|max:255',
             'company_address' => 'required|string',
-            'company_phone_number' => 'required|string|max:15|regex:/^[0-9+\-\s]+$/',
+            'company_phone_number' => 'required|string|max:15',
             'company_email' => 'required|email',
             'company_website' => 'nullable|string|max:255',
         ]);
@@ -40,7 +40,7 @@ class CreateCompanyController extends Controller
         $CompanyInfo = new Companyinfo();
         $CompanyInfo->company_name = $request->company_name;
         $CompanyInfo->company_address = $request->company_address;
-        $CompanyInfo->company_phone_number = $request->company_phone;
+        $CompanyInfo->company_phone_number = $request->company_phone_number;
         $CompanyInfo->company_email = $request->company_email;
         $CompanyInfo->company_website = $request->company_website;
 
@@ -75,35 +75,27 @@ class CreateCompanyController extends Controller
         $request->validate([
             'company_name' => 'required|string|max:255',
             'company_address' => 'required|string',
-            'company_phone_number' => 'required|string|max:15',
-            'company_email' => 'required|email|max:255|unique:_create_companies,company_email,' . $id,
+            'company_phone_number' => 'required|string|max:15|regex:/^[0-9+\-\s]+$/',
+            'company_email' => 'required|email|max:255|unique:companyinfo,company_email,' . $id,
             'company_website' => 'required|url|max:255',
         ]);
-
-        // Find and update the company
-        $companyInfo = Companyinfo::find($id);
-        // $companyInfo->update($request->only([
-        //     'company_name',
-        //     'company_address',
-        //     'company_phone_number',
-        //     'company_email',
-        //     'company_website'
-        // ]));
-
-        // Update the record with new data
-        $companyInfo->update([
-            'company_name' => $request->input('company_name'),
-            'company_address' => $request->input('company_address'),
-            'company_phone_number' => $request->input('company_phone_number'),
-            'company_email' => $request->input('company_email'),
-            'company_website' => $request->input('company_website'),
-        ]);
-
-        // Redirect with success message
-        return view('admin.create_company.index', compact('companyInfo'))->with('success', 'Company information updated successfully.');
     
-        // return redirect()->route('admin.create_company.index')->with('success', 'Company information updated successfully.');
+        // Find the company
+        $companyInfo = Companyinfo::findOrFail($id);
+    
+        // Update the record
+        $companyInfo->update([
+            'company_name' => $request->company_name,
+            'company_address' => $request->company_address,
+            'company_phone_number' => $request->company_phone_number,
+            'company_email' => $request->company_email,
+            'company_website' => $request->company_website,
+        ]);
+    
+        // Redirect with success message
+        return redirect()->route('admin.create_company.index')->with('success', 'Company information updated successfully.');
     }
+    
 
     // Delete a company
     public function destroy($id)
