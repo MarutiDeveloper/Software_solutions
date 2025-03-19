@@ -32,6 +32,13 @@
                 <p>Company Details</p>
             </a>
         </li> -->
+          <!-- Create Company Profile -->
+          <li class="nav-item">
+            <a href="{{ route('admin.company.create') }}" class="nav-link">
+                <i class="nav-icon fas fa-id-card"></i>
+                <p>Create Company Profile</p>
+            </a>
+        </li>
         <!-- Company Profile -->
         <li class="nav-item">
             <a href="{{ route('admin.company.profile') }}" class="nav-link">
