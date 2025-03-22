@@ -76,7 +76,7 @@
     <div class="container-fluid my-2">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Edit Employee / Profile</h1>
+                <h1>Edit User</h1>
             </div>
             <div class="col-sm-6 text-right">
                 <a href="{{ route('users.index') }}" class="btn btn-primary">Back</a>
@@ -146,10 +146,7 @@
                                     <option {{ ($user->status == 1) ? 'selected' : '' }} value="1"
                                         style="font-family: 'Times New Roman', Times, serif;">Active
                                     </option>
-                                    <option {{ ($user->status == 2) ? 'selected' : '' }} value="2"
-                                        style="font-family: 'Times New Roman', Times, serif;">Suspended
-                                    </option>
-                                    <option {{ ($user->status == 3) ? 'selected' : '' }} value="3"
+                                    <option {{ ($user->status == 0) ? 'selected' : '' }} value="0"
                                         style="font-family: 'Times New Roman', Times, serif;">Block
                                     </option>
                                 </select>

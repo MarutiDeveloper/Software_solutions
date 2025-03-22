@@ -45,14 +45,17 @@ class PageController extends Controller
     $page = new Page;
     $page->name = $request->name;
     $page->content = strip_tags($request->content); //  Remove all HTML tags
+    $page->showHome = $request->showHome; // Ensure this field exists in your request
     $page->save();
 
-    $message = 'Pages store Successfully';
-    session()->flash('success', $message);
+    // Set a success session message
+    session()->flash('success', 'Page updated successfully!');
+
     return response()->json([
       'status' => true,
-      'message' => $message
+      'message' => 'Page updated successfully!'
     ]);
+    return view('admin.pages.list');
   }
   public function edit($id)
   {
@@ -93,12 +96,17 @@ class PageController extends Controller
     // Update page details
     $page->name = $request->name;
     $page->content = strip_tags($request->content); //  Remove all HTML tags
+    $page->showHome = $request->showHome; // Ensure this field exists in your request
     $page->save();
+
+    // Set a success session message
+    session()->flash('success', 'Page updated successfully!');
 
     return response()->json([
       'status' => true,
-      'message' => 'Page updated successfully'
+      'message' => 'Page updated successfully!'
     ]);
+    return view('admin.pages.list');
   }
 
   public function destroy($id)

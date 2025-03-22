@@ -1,86 +1,61 @@
-<!-- Main CSS File -->
-<link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
-<style>
-  /* Logo Styling */
-  .logo-container {
-    display: flex;
-    align-items: center;
-  }
-
-  .logo-img {
-    width: 100px;
-    height: 100px;
-    object-fit: contain;
-    /* Ensures the full image is visible */
-    border-radius: 50%;
-    background-color: #fff;
-    padding: 5px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-
-  /* Responsive Adjustments */
-  @media (max-width: 768px) {
-    .logo-img {
-      width: 80px;
-      height: 80px;
-    }
-  }
-</style>
 <footer id="footer" class="footer dark-background">
 
   <div class="container footer-top">
     <div class="row gy-4">
       <div class="col-lg-4 col-md-6 footer-about">
-        <!-- <img src="{{ asset('assets/img/Software - Solutions.JPG') }}" class="rounded-circle bg-light"
-          style="height: 100px; width: 100px; object-fit: contain;" alt="Software Solutions Logo"
-            onerror="this.onerror=null; this.src='{{ asset('assets/img/default-logo.png') }}';"> -->
-        <a href="{{ route('home') }}" class="container position-relative ">
-          @if($company && $company->logo)
-        <img src="{{ asset('storage/' . $company->logo) }}" alt="Company Logo" width="100" class="img-thumbnail">
-      @endif
+        <!-- Logo Section -->
+        <a href="{{ url('/') }}" class="d-flex align-items-center text-decoration-none">
+          <img
+            src="{{ $company && $company->logo ? asset('storage/' . $company->logo) : asset('assets/img/default-logo.png') }}"
+            class="logo-img rounded-circle shadow-sm bg-light me-3" alt="Company Logo"
+            style="height: 80px; width: 80px; object-fit: contain;"
+            onerror="this.onerror=null; this.src='{{ asset('assets/img/default-logo.png') }}';">
 
-          <span class="footer-link d-inline-block h5 text-uppercase px-2 py-1 rounded sitename"
-            style="color: white; text-shadow: -1px -1px 0 blue, 1px -1px 0 blue, -1px 1px 0 blue, 1px 1px 0 blue;">
-            {{ $allCompanyInfo->company_name ?? 'Software Solutions' }}
-          </span>
-          <p>
-            <q class="text-white fst-italic">
-              {{ $company->tagline ?? '' }}
-            </q>
-          </p>
-          <!-- <q class="text-white fst-italic">
-            {{ $company->tagline ?? '' }}
-          </q> -->
+          <div>
+            <span class="h4 text-uppercase text-primary fw-bold d-block"
+              style="font-family: Georgia, 'Times New Roman', Times, serif;">
+              {{ $company->name ?? 'Software' }}
+            </span>
+            <!-- <span class="h5 text-uppercase text-dark fw-bold d-block"
+              style="font-family: Georgia, 'Times New Roman', Times, serif;">
+              {{ $company->tagline ?? 'Solutions' }}
+            </span> -->
+          </div>
         </a>
 
-        <div class="footer-contact pt-3">
-          <p>{{ $allCompanyInfo->company_address ?? '123 Street, New York, USA' }}</p>
-          <a href="https://www.truecaller.com/search/in/+91{{ $allCompanyInfo->company_phone_number ?? '000 000 0000' }}"
-            arget="_blank" class="footer-link"> Phone:
-            {{ $allCompanyInfo->company_phone_number ?? '000 000 0000' }}
-          </a>
-          <p style="font-size: medium ;">
-            <a href="mailto:{{ $allCompanyInfo->company_email ?? 'example@example.com' }}" class="footer-link"> Email:
+        <!-- Contact Information -->
+        <div class="footer-contact mt-3">
+          <p class="mb-2"><i class="bi bi-geo-alt text-primary"></i>
+            {{ $allCompanyInfo->company_address ?? '123 Street, New York, USA' }}</p>
+          <p class="mb-2"><i class="bi bi-telephone text-primary"></i> <strong>Phone:</strong>
+            <a href="https://www.truecaller.com/search/in/+91{{ $allCompanyInfo->company_phone_number ?? '000 000 0000' }}"
+              arget="_blank" class="text-primary">
+              {{ $allCompanyInfo->company_phone_number ?? '000 000 0000' }}
+            </a>
+          </p>
+          <p class="mb-0"><i class="bi bi-envelope text-primary"></i> <strong>Email:</strong>
+          <a href="mailto:{{ $allCompanyInfo->company_email ?? 'example@example.com' }}" class="text-primary"> 
               {{ $allCompanyInfo->company_email ?? 'example@example.com' }}
             </a>
           </p>
-          <p style="font-size: medium ;">
-            <a href="{{ $allCompanyInfo->company_website ?? '' }}" class="footer-link"> Website :
-              {{ $allCompanyInfo->company_website ?? '' }}
-            </a>
-          </p>
-
-
         </div>
 
+        <!-- Social Media Links -->
+        <div class="social-links d-flex mt-4">
+          <a href="{{ $company->twitter ?? '#' }}" class="me-3 text-primary"><i class="bi bi-twitter-x"></i></a>
+          <a href="{{ $company->facebook ?? '#' }}" class="me-3 text-primary"><i class="bi bi-facebook"></i></a>
+          <a href="{{ $company->instagram ?? '#' }}" class="me-3 text-primary"><i class="bi bi-instagram"></i></a>
+          <a href="{{ $company->linkedin ?? '#' }}" class="text-primary"><i class="bi bi-linkedin"></i></a>
+        </div>
       </div>
+
 
 
       <div class="col-lg-2 col-md-3 footer-links">
         <h4>Useful Links</h4>
         <ul>
           <li><a href="{{url('/')}}">Home</a></li>
-          <li><a href="{{url('/about')}}">About us</a></li>
+          <li><a href="{{route('frontend.about')}}">About us</a></li>
           <li><a href="{{url('/service')}}">Services</a></li>
           <li><a href="{{url('/team')}}">Terms of service</a></li>
           <li><a href="">Privacy policy</a></li>

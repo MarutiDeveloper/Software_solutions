@@ -8,9 +8,64 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\Models\Setting;
 
 class SettingController extends Controller
 {
+    // Show the settings page// Show the settings page
+    public function index()
+    {
+        // Fetch all settings as a collection
+        $settings = Setting::all()->keyBy('key'); // Key the collection by the key column
+
+        return view('admin.settings.index', compact('settings'));
+    }
+
+    // Store or update settings
+    public function update(Request $request)
+    {
+        try {
+            // Validate input data
+            $validatedData = $request->validate([
+                'site_name' => 'required|string|max:255',
+                'site_email' => 'required|email|max:255',
+                'site_phone' => 'required|string|max:20',
+                'facebook' => 'nullable|url|max:255',
+                'instagram' => 'nullable|url|max:255',
+                'twitter' => 'nullable|url|max:255',
+                'linkedin' => 'nullable|url|max:255',
+                'youtube' => 'nullable|url|max:255',
+            ]);
+
+            // Remove empty values to prevent unnecessary updates
+            $filteredData = array_filter($validatedData, fn($value) => !is_null($value) && trim($value) !== '');
+
+            // Loop through filtered data and update/create settings
+            foreach ($filteredData as $key => $value) {
+                Setting::updateOrCreate(
+                    ['key' => $key],
+                    ['value' => trim($value)] // Trim to remove unnecessary spaces
+                );
+            }
+
+            // Update/Create Social Media Links
+            $socialLinks = ['facebook', 'instagram', 'twitter', 'linkedin', 'youtube'];
+
+            foreach ($socialLinks as $social) {
+                if ($request->has($social)) {
+                    Setting::updateOrCreate(
+                        ['key' => $social],
+                        ['value' => trim($request->$social)]
+                    );
+                }
+            }
+
+
+            return redirect()->route('admin.settings.index')->with('success', 'Settings updated successfully!');
+        } catch (\Exception $e) {
+            return redirect()->route('admin.settings.index')->with('error', 'Something went wrong! ' . $e->getMessage());
+        }
+    }
     public function showChangePasswordForm()
     {
         return view('admin.change-password');
