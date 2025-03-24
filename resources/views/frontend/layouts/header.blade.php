@@ -93,27 +93,34 @@
 
 <body class="index-page">
 
-    <!-- Header Section -->
-    <header id="header" class="header d-flex align-items-center sticky-top">
-        <div class="container position-relative d-flex align-items-center justify-content-between">
+    @php
+    use App\Models\Company;
+    $company = Company::first(); // Fetch company details
+@endphp
 
-            <!-- Logo Section -->
-            <a href="{{ url('/') }}" class="d-flex align-items-center">
-                <img src="{{ asset('assets/img/Software - Solutions.JPG') }}" class="logo-img"
-                    alt="Software Solutions Logo"
-                    onerror="this.onerror=null; this.src='{{ asset('assets/img/default-logo.png') }}';">
-                <div class="ms-2">
-                    <span class="h3 text-uppercase text-primary px-2 fw-bold"
-                        style="font-family: Georgia, 'Times New Roman', Times, serif;">
-                        Software
-                    </span>
-                    <span class="h3 text-uppercase text-dark fw-bold"
-                        style="font-family: Georgia, 'Times New Roman', Times, serif;">
-                        Solutions
-                    </span>
-                </div>
-            </a>
+<!-- Header Section -->
+<header id="header" class="header d-flex align-items-center sticky-top">
+    <div class="container position-relative d-flex align-items-center justify-content-between">
 
+        <!-- Logo Section -->
+        <a href="{{ url('/') }}" class="d-flex align-items-center">
+            <img src="{{ $company && $company->logo ? asset('storage/' . $company->logo) : asset('assets/img/default-logo.png') }}" 
+                class="logo-img"
+                alt="Company Logo"
+                onerror="this.onerror=null; this.src='{{ asset('assets/img/default-logo.png') }}';">
+            
+            <div class="ms-2">
+                <span class="h3 text-uppercase text-primary px-2 fw-bold"
+                    style="font-family: Georgia, 'Times New Roman', Times, serif;">
+                    {{ $company->name ?? 'Software' }}
+                </span>
+                <span class="h3 text-uppercase text-dark fw-bold"
+                    style="font-family: Georgia, 'Times New Roman', Times, serif;">
+                    
+                </span>
+            </div>
+        </a>
+    
             <!-- Navigation -->
             <nav id="navmenu" class="navmenu">
                 <ul>
@@ -128,7 +135,8 @@
                         </ul>
                     </li>
                     <li><a href="{{ url('/services') }}">Services</a></li>
-                    <li><a href="{{ url('/blog') }}">Blog</a></li>
+                    <li><a href="{{ route('frontend.blog.index') }}">Blog</a></li>
+
                     <li><a href="{{ url('/contact') }}">Contact</a></li>
                 </ul>
                 <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
@@ -136,7 +144,7 @@
 
             <!-- Social Media Links -->
             <div class="header-social-links d-flex align-items-center">
-                <a href="https://twitter.com" target="_blank" class="twitter"><i class="bi bi-twitter"></i></a>
+                <a href="https://twitter.com" target="_blank" class="twitter"><i  class="bi bi-twitter-x"></i></a>
                 <a href="https://facebook.com" target="_blank" class="facebook"><i class="bi bi-facebook"></i></a>
                 <a href="https://instagram.com" target="_blank" class="instagram"><i class="bi bi-instagram"></i></a>
                 <a href="https://linkedin.com" target="_blank" class="linkedin"><i class="bi bi-linkedin"></i></a>
