@@ -49,6 +49,7 @@
                         <tr>
                             <th width="60">ID</th>
                             <th>Page Name</th>
+                            <th class="text-center">Show In Home</th>
                             <th width="100">Action</th>
                         </tr>
                     </thead>
@@ -59,6 +60,7 @@
                                 <tr>
                                     <td>{{ $page->id }}</td>
                                     <td>{{ $page->name }}</td>
+                                    <td class="text-center">{{ $page->showHome }}</td>
                                     
                                     <td>
                                         <a href="{{ route('pages.edit', $page->id) }}">

@@ -2627,3 +2627,8 @@ section,
   color: color-mix(in srgb, var(--default-color), transparent 60%);
   font-size: 14px;
 }
+.img-circle {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}

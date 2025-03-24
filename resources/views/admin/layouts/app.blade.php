@@ -26,6 +26,15 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.min.css">
 
+
+    <!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Bootstrap JS (include Popper.js as well) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -62,15 +71,14 @@
         </ol>
     </div>
     -->
-
+           
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
                 <!-- Fullscreen button -->
                 <li class="nav-item">
                     <a class="nav-link" data-widget="fullscreen" href="#" role="button">
                         <!-- <i class="fas fa-expand-arrows-alt"></i> -->
-                        <image src="https://ssl.gstatic.com/gb/images/bar/al-icon.png" alt="" height="24" width="24">
-                        </image>
+                        <image src="https://ssl.gstatic.com/gb/images/bar/al-icon.png" alt="" height="24" width="24"></image>
                     </a>
                 </li>
 
@@ -104,13 +112,6 @@
                             </a>
                         </div>
                         <div class="dropdown-divider"></div>
-                        <!-- Edit Profile -->
-                        <div class="text-center">
-                            <a href="{{ route('users.edit', auth()->user()->id) }}" class="dropdown-item">
-                                <i class="fas fa-user-edit mr-2"></i> Edit Profile
-                            </a>
-                        </div>
-                        <div class="dropdown-divider"></div>
                         <!-- Logout -->
                         <div class="text-center">
                             <a href="{{ route('admin.logout') }}" class="dropdown-item text-danger">
@@ -131,8 +132,7 @@
         <!-- /.content-wrapper -->
         <footer class="main-footer">
 
-            <strong class="text-center"
-                style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif: bold ;">Copyright
+            <strong class="text-center" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif: bold ;">Copyright
                 &copy; 2024-2025 Online Software Solutions All rights reserved.
         </footer>
 
@@ -144,6 +144,10 @@
     <script src="{{ asset('admin-assets/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <!-- AdminLTE App -->
     <script src="{{ asset('admin-assets/js/adminlte.min.js') }}"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 
     <!-- Summernote -->
     <script src="{{ asset('admin-assets/plugins/summernote/summernote.min.js') }}"></script>

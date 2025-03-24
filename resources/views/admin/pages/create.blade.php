@@ -33,16 +33,28 @@
                             </div>
                             <div class="col-md-6">
                                 <!-- <div class="mb-3">
-                                    <label for="slug">Slug</label>
-                                    <input type="text" readonly name="slug" id="slug" class="form-control"
-                                        placeholder="Slug">
-                                    <p></p>
-                                </div> -->
+                                        <label for="slug">Slug</label>
+                                        <input type="text" readonly name="slug" id="slug" class="form-control"
+                                            placeholder="Slug">
+                                        <p></p>
+                                    </div> -->
                             </div>
                             <div class="col-md-12">
                                 <div class="mb-3">
                                     <label for="content">Content</label>
                                     <textarea name="content" id="content" class="summernote" cols="30" rows="10"></textarea>
+                                </div>
+                            </div>
+                            <!-- Show On Home -->
+                            <div class="col-md-6">
+                                <div class="mb-3" style="font-family: 'Times New Roman', Times, serif; font-weight: bold ;">
+                                    <label for="status">Show On Home</label>
+                                    <select name="showHome" id="showHome" class="form-control">
+                                        <option value="Yes" style="font-family: 'Times New Roman', Times, serif;">Yes
+                                        </option>
+                                        <option value="No" style="font-family: 'Times New Roman', Times, serif;">No
+                                        </option>
+                                    </select>
                                 </div>
                             </div>
 
