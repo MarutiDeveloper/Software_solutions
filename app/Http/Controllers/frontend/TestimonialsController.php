@@ -1,16 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\frontend;
+namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Models\Testimonial;
 
-class TestimonialsController extends Controller
-{
-    public function index()
-    {
-        return view('frontend.testimonials');
-
+class TestimonialsController extends Controller {
+    public function index() {
+        $testimonials = Testimonial::all();
+        return view('frontend.testimonials', compact('testimonials'));
     }
-
 }

@@ -18,27 +18,77 @@
                 <p>Dashboard</p>
             </a>
         </li>
-        <!-- Create Company -->
         <li class="nav-item">
-            <a href="{{ route('admin.create_company.index') }}" class="nav-link">
-                <i class="nav-icon fas fa-building"></i>
-                <p>Create Company</p>
-            </a>
-        </li>
-        <!-- Company Details -->
-        <!-- <li class="nav-item">
             <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-info-circle"></i>
-                <p>Company Details</p>
+                <i class="nav-icon fas fa-building"></i>
+                <p>
+                    Create Company
+                    <i class="right fas fa-angle-left"></i>
+                </p>
             </a>
-        </li> -->
-        <!-- Company Profile -->
-        <li class="nav-item">
-            <a href="{{ route('admin.company.profile') }}" class="nav-link">
-                <i class="nav-icon fas fa-id-card"></i>
-                <p>Company Profile</p>
-            </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{ route('admin.blogs.index') }}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Manage Blogs</p>
+                    </a>
+                </li>
+        
+                <li class="nav-item">
+                    <a href="{{ route('admin.team.index') }}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Manage Team</p>
+                    </a>
+                </li>
+        
+                <li class="nav-item">
+                    <a href="{{ route('admin.services.index') }}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Manage Services</p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{ route('admin.testimonials.index') }}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Manage Testimonials</p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{ route('admin.hero.index') }}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Manage Hero Section</p>
+                    </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="{{ route('admin.companylogos.index') }}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Manage Company Logos</p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{ route('admin.about.index') }}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Manage About</p>
+                    </a>
+                </li>
+                
+        
+                
+            </ul>
         </li>
+        
+        <!-- Company Profile -->
+<li class="nav-item">
+    <a href="{{ route('admin.company.profile') }}" class="nav-link">
+        <i class="nav-icon fas fa-id-card"></i>
+        <p>Company Profile</p>
+    </a>
+</li>
+
         <!-- Add Common Layouts -->
         <li class="nav-item">
             <a href="#" class="nav-link">
@@ -48,42 +98,44 @@
         </li>
         <!-- Multiple Branch -->
         <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{ route('admin.branches.index') }}" class="nav-link">
                 <i class="nav-icon fas fa-code-branch"></i>
                 <p>Multiple Branch</p>
             </a>
         </li>
+        
         <!-- Settings -->
         <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{route('admin.settings.index')}}" class="nav-link">
                 <i class="nav-icon fas fa-cogs"></i>
                 <p>Settings</p>
             </a>
         </li>
         <!-- Messages -->
         <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{ route('admin.messages') }}" class="nav-link">
                 <i class="nav-icon fas fa-envelope"></i>
                 <p>Messages</p>
             </a>
         </li>
+        
         <!-- Users -->
         <li class="nav-item">
-            <a href="{{ route('users.index') }}" class="nav-link">
+            <a href="{{route('admin.employee.index')}}" class="nav-link">
                 <i class="nav-icon fas fa-users"></i>
                 <p>Employee</p>
             </a>
         </li>
         <!-- Pages -->
         <li class="nav-item">
-            <a href="{{ route('pages.index') }}" class="nav-link">
+            <a href="{{route('pages.index')}}" class="nav-link">
                 <i class="nav-icon fas fa-file-alt"></i>
                 <p>Pages</p>
             </a>
         </li>
         <!-- Cache Clear -->
         <li class="nav-item">
-            <a href="{{ route('admin.clearCache') }}" class="nav-link">
+            <a href="{{route('admin.clearCache')}}" class="nav-link">
                 <i class="nav-icon fas fa-trash-alt"></i>
                 <p>Cache Clear</p>
             </a>

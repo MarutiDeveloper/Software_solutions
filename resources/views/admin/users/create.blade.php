@@ -76,7 +76,7 @@
     <div class="container-fluid my-2">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Create New Employee</h1>
+                <h1>Create New User</h1>
             </div>
             <div class="col-sm-6 text-right">
                 <a href="{{ route('users.index') }}" class="btn btn-primary">Back</a>
@@ -143,9 +143,7 @@
                                 <select name="status" id="status" class="form-control">
                                     <option value="1" style="font-family: 'Times New Roman', Times, serif;">Active
                                     </option>
-                                    <option value="2" style="font-family: 'Times New Roman', Times, serif;">Suspended
-                                    </option>
-                                    <option value="3" style="font-family: 'Times New Roman', Times, serif;">Block
+                                    <option value="0" style="font-family: 'Times New Roman', Times, serif;">Block
                                     </option>
                                 </select>
                             </div>
