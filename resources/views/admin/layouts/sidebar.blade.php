@@ -133,12 +133,19 @@
                 <p>Pages</p>
             </a>
         </li>
+           <!-- Manage Footer -->
+           <li class="nav-item">
+            <a href="{{ route('admin.create_footer.index') }}" class="nav-link">
+                <i class="nav-icon fas fa-id-card"></i>
+                <p>Manage Footer</p>
+            </a>
+        </li>
         <!-- Cache Clear -->
         <li class="nav-item">
             <a href="{{route('admin.clearCache')}}" class="nav-link">
                 <i class="nav-icon fas fa-trash-alt"></i>
                 <p>Cache Clear</p>
-            </a>
+            </a>  
         </li>
     </ul>
 </nav>

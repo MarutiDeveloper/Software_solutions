@@ -14,7 +14,7 @@
           <div>
             <span class="h4 text-uppercase text-primary fw-bold d-block"
               style="font-family: Georgia, 'Times New Roman', Times, serif;">
-              {{ $company->name ?? 'Software' }}
+              {{ $allCompanyInfo->company_name ?? 'Software Solutions' }}
             </span>
             <!-- <span class="h5 text-uppercase text-dark fw-bold d-block"
               style="font-family: Georgia, 'Times New Roman', Times, serif;">

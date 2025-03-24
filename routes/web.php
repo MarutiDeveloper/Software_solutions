@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\FooterController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\AuthController;
@@ -120,6 +121,26 @@ Route::prefix('admin')->group(function () {
     Route::get('/services/delete/{id}', [AdminServiceController::class, 'destroy'])->name('admin.services.delete');
 });
 
+// ------------------------------------
+// Create - Footer Management Routes
+// ------------------------------------
+// Route to list Footer information
+Route::get('/admin/create_footer', [FooterController::class, 'index'])->name('admin.create_footer.index');
+// Route to Create Footer information
+Route::get('/admin/create_footer/create', [FooterController::class, 'create'])->name('admin.create_footer.create'); // Show form for creating
+
+// Route to Store Footer information
+Route::post('/admin/create_footer', [FooterController::class, 'store'])->name('admin.create_footer.store');        // Store new entry
+
+// Route to edit Footer information
+Route::get('/admin/create_footer/edit/{id}', [FooterController::class, 'edit'])->name('admin.create_footer.edit');
+
+// Route to update Footer information
+Route::put('/admin/create_footer/update/{id}', [FooterController::class, 'update'])->name('admin.create_footer.update');
+
+// Route to delete Footer information
+Route::delete('/admin/create_footer/destroy/{id}', [FooterController::class, 'destroy'])->name('admin.create_footer.destroy');
+
 // Frontend route
 Route::get('/testimonials', [FrontendTestimonialController::class, 'index'])->name('testimonials.index');
 
@@ -214,19 +235,19 @@ Route::prefix('admin')->group(function () {
     });
 
     Route::get('/admin/company-profile', [ProfileController::class, 'index'])->name('admin.company.profile');
-Route::post('/admin/company-profile/update', [ProfileController::class, 'update'])->name('admin.company.profile.update');
+    Route::post('/admin/company-profile/update', [ProfileController::class, 'update'])->name('admin.company.profile.update');
 
-Route::get('/admin/messages', [MessagesController::class, 'index'])->name('admin.messages');
-Route::delete('/admin/messages/{id}', [MessagesController::class, 'destroy'])->name('admin.messages.destroy');
+    Route::get('/admin/messages', [MessagesController::class, 'index'])->name('admin.messages');
+    Route::delete('/admin/messages/{id}', [MessagesController::class, 'destroy'])->name('admin.messages.destroy');
 
 
 
-Route::prefix('admin')->group(function () {
-    Route::get('branches', [BranchController::class, 'index'])->name('admin.branches.index');
-    Route::post('branches', [BranchController::class, 'store'])->name('admin.branches.store');
-    Route::get('branches/{id}/edit', [BranchController::class, 'edit'])->name('admin.branches.edit');
-    Route::post('branches/{id}', [BranchController::class, 'update'])->name('admin.branches.update');
-    Route::delete('branches/{id}', [BranchController::class, 'destroy'])->name('admin.branches.destroy');
-});
+    Route::prefix('admin')->group(function () {
+        Route::get('branches', [BranchController::class, 'index'])->name('admin.branches.index');
+        Route::post('branches', [BranchController::class, 'store'])->name('admin.branches.store');
+        Route::get('branches/{id}/edit', [BranchController::class, 'edit'])->name('admin.branches.edit');
+        Route::post('branches/{id}', [BranchController::class, 'update'])->name('admin.branches.update');
+        Route::delete('branches/{id}', [BranchController::class, 'destroy'])->name('admin.branches.destroy');
+    });
 
 });

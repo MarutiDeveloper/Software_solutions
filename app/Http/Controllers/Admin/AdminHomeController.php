@@ -15,7 +15,7 @@ class AdminHomeController extends Controller
 {
     public function index()
     {
-        $totalEmployees = User::count();
+        $totalEmployees = Employee::count();
         $totalCompanies = Company::count();
         $totalBranches = Branch::count();
 

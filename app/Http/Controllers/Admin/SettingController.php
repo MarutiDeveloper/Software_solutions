@@ -21,6 +21,7 @@ class SettingController extends Controller
         return view('admin.settings.index', compact('settings'));
     }
 
+
     // Store or update settings
     public function update(Request $request)
     {
@@ -36,36 +37,24 @@ class SettingController extends Controller
                 'linkedin' => 'nullable|url|max:255',
                 'youtube' => 'nullable|url|max:255',
             ]);
-
+    
             // Remove empty values to prevent unnecessary updates
             $filteredData = array_filter($validatedData, fn($value) => !is_null($value) && trim($value) !== '');
-
-            // Loop through filtered data and update/create settings
+    
+            // Update or create general settings
             foreach ($filteredData as $key => $value) {
                 Setting::updateOrCreate(
                     ['key' => $key],
                     ['value' => trim($value)] // Trim to remove unnecessary spaces
                 );
             }
-
-            // Update/Create Social Media Links
-            $socialLinks = ['facebook', 'instagram', 'twitter', 'linkedin', 'youtube'];
-
-            foreach ($socialLinks as $social) {
-                if ($request->has($social)) {
-                    Setting::updateOrCreate(
-                        ['key' => $social],
-                        ['value' => trim($request->$social)]
-                    );
-                }
-            }
-
-
+    
             return redirect()->route('admin.settings.index')->with('success', 'Settings updated successfully!');
         } catch (\Exception $e) {
             return redirect()->route('admin.settings.index')->with('error', 'Something went wrong! ' . $e->getMessage());
         }
     }
+    
     public function showChangePasswordForm()
     {
         return view('admin.change-password');
