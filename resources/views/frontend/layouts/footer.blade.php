@@ -38,7 +38,13 @@
               {{ $allCompanyInfo->company_email ?? 'example@example.com' }}
             </a>
           </p>
+          <p class="mb-0 shadow-lg rounded"><i class=" bi bi-globe"></i> <strong>Website: </strong>
+            <a href="mailto:{{ $allCompanyInfo->company_website	 ?? 'example@example.com' }}" class="text-primary">
+              {{ $allCompanyInfo->company_website	 ?? 'example@example.com' }}
+            </a>
+          </p>
         </div>
+        
 
         <!-- Social Media Links -->
         <div class="social-links d-flex mt-4">

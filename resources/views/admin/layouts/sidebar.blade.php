@@ -111,12 +111,12 @@
         </li>
         
         <!-- Settings -->
-        <li class="nav-item">
+        <!-- <li class="nav-item">
             <a href="{{route('admin.settings.index')}}" class="nav-link">
                 <i class="nav-icon fas fa-cogs"></i>
                 <p>Settings</p>
             </a>
-        </li>
+        </li> -->
         <!-- Messages -->
         <li class="nav-item">
             <a href="{{ route('admin.messages') }}" class="nav-link">
