@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Companyinfo extends Model
 {
     use HasFactory;
-
     protected $table = 'companyinfo';
 
     // Define fillable fields

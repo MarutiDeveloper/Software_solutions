@@ -26,6 +26,15 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.min.css">
 
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap JS (include Popper.js as well) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -104,13 +113,6 @@
                             </a>
                         </div>
                         <div class="dropdown-divider"></div>
-                        <!-- Edit Profile -->
-                        <div class="text-center">
-                            <a href="{{ route('users.edit', auth()->user()->id) }}" class="dropdown-item">
-                                <i class="fas fa-user-edit mr-2"></i> Edit Profile
-                            </a>
-                        </div>
-                        <div class="dropdown-divider"></div>
                         <!-- Logout -->
                         <div class="text-center">
                             <a href="{{ route('admin.logout') }}" class="dropdown-item text-danger">
@@ -145,6 +147,10 @@
     <!-- AdminLTE App -->
     <script src="{{ asset('admin-assets/js/adminlte.min.js') }}"></script>
 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
     <!-- Summernote -->
     <script src="{{ asset('admin-assets/plugins/summernote/summernote.min.js') }}"></script>
 
@@ -169,6 +175,66 @@
         $(document).ready(function () {
             $(".summernote").summernote({
                 height: 250,  // Corrected from semicolon to comma
+            });
+        });
+    </script>
+    <script>
+        function updateDateTime() {
+            let now = new Date();
+            let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true };
+            document.getElementById("currentDateTime").innerHTML = now.toLocaleString('en-US', options);
+        }
+
+        setInterval(updateDateTime, 1000); // Update every second
+        updateDateTime(); // Initial call
+    </script>
+    <!-- Include Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var ctx = document.getElementById("companyGrowthChart").getContext("2d");
+
+            var companyGrowthChart = new Chart(ctx, {
+                type: "line",
+                data: {
+                    labels: ["2019", "2020", "2021", "2022", "2023", "2024", "2025"], // X-axis labels
+                    datasets: [{
+                        label: "Revenue Growth (in Millions)",
+                        data: [2.5, 3.8, 5.2, 7.5, 9.1, 12.4, 15.3], // Sample data
+                        backgroundColor: "rgba(54, 162, 235, 0.2)",
+                        borderColor: "rgba(54, 162, 235, 1)",
+                        borderWidth: 2,
+                        pointRadius: 5,
+                        pointBackgroundColor: "rgba(54, 162, 235, 1)",
+                        tension: 0.4 // Smooth curves
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: "Revenue (in Millions $)"
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: "Years"
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: "top"
+                        }
+                    }
+                }
             });
         });
     </script>

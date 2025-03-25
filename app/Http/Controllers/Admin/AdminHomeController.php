@@ -1,20 +1,39 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Order;
-use App\Models\Product;
-use App\Models\TempImage;
 use App\Models\User;
-use Illuminate\Http\Request;
-use Illuminate\Support\Carbon;
+use App\Models\Company;
+use App\Models\Branch;
 use Illuminate\Support\Facades\Auth;
-use Artisan;
-use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Artisan;
+use Carbon\Carbon;
+use App\Models\Employee;
 
 class AdminHomeController extends Controller
 {
+    public function index()
+    {
+        $totalEmployees = Employee::count();
+        $totalCompanies = Company::count();
+        $totalBranches = Branch::count();
+
+        // Fetch last 6 months of company registrations for growth chart
+        $growthData = Company::selectRaw('DATE_FORMAT(created_at, "%Y-%m") as month, COUNT(id) as count')
+            ->groupBy('month')
+            ->orderBy('month', 'asc')
+            ->take(6) // Last 6 months
+            ->get();
+
+        // Extract month labels and company counts
+        $growthMonths = $growthData->pluck('month');
+        $growthCounts = $growthData->pluck('count');
+
+        return view('admin.dashboard', compact('totalEmployees', 'totalCompanies', 'totalBranches', 'growthMonths', 'growthCounts'));
+    }
+
+
     public function clearCache()
     {
         Artisan::call('view:clear');
@@ -22,14 +41,10 @@ class AdminHomeController extends Controller
         Artisan::call('config:clear');
         Artisan::call('cache:clear');
         Artisan::call('optimize:clear');
-        //return 'Cache Cleared now , go back';
-        return redirect()->back()->with('success', 'You have Successfully Cash Clear !');
+
+        return redirect()->back()->with('success', 'Cache cleared successfully!');
     }
-    public function index()
-    {
-        return view('admin.dashboard');
-        
-    }
+
     public function logout()
     {
         Auth::guard('admin')->logout();
