@@ -144,7 +144,7 @@
 
             <!-- Social Media Links -->
             <div class="header-social-links d-flex align-items-center">
-                <a href="https://twitter.com" target="_blank" class="twitter"><i class="bi bi-twitter"></i></a>
+                <a href="https://twitter.com" target="_blank" class="twitter"><i  class="bi bi-twitter-x"></i></a>
                 <a href="https://facebook.com" target="_blank" class="facebook"><i class="bi bi-facebook"></i></a>
                 <a href="https://instagram.com" target="_blank" class="instagram"><i class="bi bi-instagram"></i></a>
                 <a href="https://linkedin.com" target="_blank" class="linkedin"><i class="bi bi-linkedin"></i></a>

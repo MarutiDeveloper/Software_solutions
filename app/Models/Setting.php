@@ -13,9 +13,6 @@ class Setting extends Model
 
     protected $fillable = [
         'name',
-        'value',
-        'group',
-        'type',
         'facebook',
         'instagram',
         'twitter',

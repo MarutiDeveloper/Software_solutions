@@ -5,6 +5,8 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use App\Models\Page;
 use App\Models\Setting;
+use App\Models\Company;
+use App\Models\Companyinfo;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -25,6 +27,8 @@ class AppServiceProvider extends ServiceProvider
        
         
         $staticPages = Page::all(); // Fetch all static pages
+        $company = Company::first(); // Fetch the first record from Company table
+        $allCompanyInfo = Companyinfo::first(); // Fetch the first record from Companyinfo table
         //$settings = Setting::pluck('value', 'key')->toArray(); // Fetch all settings
 
 
@@ -33,6 +37,8 @@ class AppServiceProvider extends ServiceProvider
             
             
             'staticPages' => $staticPages,
+            'company' => $company,
+            'allCompanyInfo' => $allCompanyInfo,
             //'settings' => $settings,
         ]);
     }

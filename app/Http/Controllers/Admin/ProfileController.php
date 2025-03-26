@@ -45,7 +45,7 @@ class ProfileController extends Controller
             }
         
             // Store new logo in 'public/company_logos' directory
-            $logoPath = $request->file('logo')->store('company_logos', 'public');
+            $logoPath = $request->file('logo')->store('Logos', 'public');
             $company->logo = $logoPath;
         }
         

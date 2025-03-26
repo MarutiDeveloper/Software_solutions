@@ -21,7 +21,7 @@ class ContactMail extends Mailable
     public function build()
     {
         return $this->from(env('MAIL_FROM_ADDRESS'))
-                    ->subject('New Contact Form Submission')
+                    ->subject("New Contact Inquiry from " . $this->contact['name'])
                     ->view('emails.contact')
                     ->with('contact', $this->contact);
     }

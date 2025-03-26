@@ -53,7 +53,7 @@
                 </div>
             </div>
             <div class="pb-5 pt-3">
-                <button type="submit" class="btn shadow-lg   bg-body circle  btn-primary"><i
+                <button type="submit" class="btn shadow-lg   bg-body circle"><i
                         class="fas fa-sync-alt"></i> UPDATE</button>
 
             </div>

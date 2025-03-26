@@ -28,12 +28,12 @@
 
 
     <!-- Bootstrap CSS -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-<!-- Bootstrap JS (include Popper.js as well) -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap JS (include Popper.js as well) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
 
 </head>
 
@@ -71,14 +71,15 @@
         </ol>
     </div>
     -->
-           
+
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
                 <!-- Fullscreen button -->
                 <li class="nav-item">
                     <a class="nav-link" data-widget="fullscreen" href="#" role="button">
                         <!-- <i class="fas fa-expand-arrows-alt"></i> -->
-                        <image src="https://ssl.gstatic.com/gb/images/bar/al-icon.png" alt="" height="24" width="24"></image>
+                        <image src="https://ssl.gstatic.com/gb/images/bar/al-icon.png" alt="" height="24" width="24">
+                        </image>
                     </a>
                 </li>
 
@@ -132,7 +133,8 @@
         <!-- /.content-wrapper -->
         <footer class="main-footer">
 
-            <strong class="text-center" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif: bold ;">Copyright
+            <strong class="text-center"
+                style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif: bold ;">Copyright
                 &copy; 2024-2025 Online Software Solutions All rights reserved.
         </footer>
 
@@ -146,7 +148,7 @@
     <script src="{{ asset('admin-assets/js/adminlte.min.js') }}"></script>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 
     <!-- Summernote -->
@@ -173,6 +175,66 @@
         $(document).ready(function () {
             $(".summernote").summernote({
                 height: 250,  // Corrected from semicolon to comma
+            });
+        });
+    </script>
+    <script>
+        function updateDateTime() {
+            let now = new Date();
+            let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true };
+            document.getElementById("currentDateTime").innerHTML = now.toLocaleString('en-US', options);
+        }
+
+        setInterval(updateDateTime, 1000); // Update every second
+        updateDateTime(); // Initial call
+    </script>
+    <!-- Include Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var ctx = document.getElementById("companyGrowthChart").getContext("2d");
+
+            var companyGrowthChart = new Chart(ctx, {
+                type: "line",
+                data: {
+                    labels: ["2019", "2020", "2021", "2022", "2023", "2024", "2025"], // X-axis labels
+                    datasets: [{
+                        label: "Revenue Growth (in Millions)",
+                        data: [2.5, 3.8, 5.2, 7.5, 9.1, 12.4, 15.3], // Sample data
+                        backgroundColor: "rgba(54, 162, 235, 0.2)",
+                        borderColor: "rgba(54, 162, 235, 1)",
+                        borderWidth: 2,
+                        pointRadius: 5,
+                        pointBackgroundColor: "rgba(54, 162, 235, 1)",
+                        tension: 0.4 // Smooth curves
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: "Revenue (in Millions $)"
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: "Years"
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: "top"
+                        }
+                    }
+                }
             });
         });
     </script>

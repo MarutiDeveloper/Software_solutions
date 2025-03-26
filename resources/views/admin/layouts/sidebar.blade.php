@@ -61,7 +61,13 @@
                         <p>Manage Hero Section</p>
                     </a>
                 </li>
-                
+                <li class="nav-item">
+                    <a href="{{ route('admin.create_footer.index') }}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Manage Footer</p>
+                    </a>
+                </li>
+
                 <li class="nav-item">
                     <a href="{{ route('admin.companylogos.index') }}" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
@@ -90,12 +96,12 @@
 </li>
 
         <!-- Add Common Layouts -->
-        <li class="nav-item">
+        <!-- <li class="nav-item">
             <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-layer-group"></i>
                 <p>Add Common Layouts</p>
             </a>
-        </li>
+        </li> -->
         <!-- Multiple Branch -->
         <li class="nav-item">
             <a href="{{ route('admin.branches.index') }}" class="nav-link">
@@ -105,12 +111,12 @@
         </li>
         
         <!-- Settings -->
-        <li class="nav-item">
+        <!-- <li class="nav-item">
             <a href="{{route('admin.settings.index')}}" class="nav-link">
                 <i class="nav-icon fas fa-cogs"></i>
                 <p>Settings</p>
             </a>
-        </li>
+        </li> -->
         <!-- Messages -->
         <li class="nav-item">
             <a href="{{ route('admin.messages') }}" class="nav-link">
@@ -133,12 +139,19 @@
                 <p>Pages</p>
             </a>
         </li>
+           <!-- Manage Footer -->
+           <!-- <li class="nav-item">
+            <a href="{{ route('admin.create_footer.index') }}" class="nav-link">
+                <i class="nav-icon fas fa-id-card"></i>
+                <p>Manage Footer</p>
+            </a>
+        </li> -->
         <!-- Cache Clear -->
         <li class="nav-item">
             <a href="{{route('admin.clearCache')}}" class="nav-link">
                 <i class="nav-icon fas fa-trash-alt"></i>
                 <p>Cache Clear</p>
-            </a>
+            </a>  
         </li>
     </ul>
 </nav>
